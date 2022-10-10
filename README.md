@@ -1,6 +1,6 @@
 # Participant Registry Microservice'
 
-<!-- [![CircleCI](https://circleci.com/gh/CIRCLECI-GWP/nest-slack-notifications.svg?style=svg)](https://circleci.com/gh/CIRCLECI-GWP/nest-slack-notifications) -->
+[![CircleCI](https://circleci.com/gh/yemiwebby/participants-registry.svg?style=svg)](https://circleci.com/gh/yemiwebby/participants-registry)
 
 ## Clone the project
 

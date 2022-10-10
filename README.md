@@ -60,6 +60,37 @@ Or
 go test -v -cover ./api
 ```
 
+You will see an output similar to the following:
+
+```bash
+GIN_MODE=release gotest -v -cover ./api
+=== RUN   TestHomepageHandler
+[GIN] 2022/10/10 - 09:00:02 | 200 |      87.333µs |                 | GET      "/"
+--- PASS: TestHomepageHandler (0.00s)
+=== RUN   TestCreateParticipant
+[GIN] 2022/10/10 - 09:00:02 | 201 |     262.625µs |                 | POST     "/participant"
+    participants_test.go:73: Expected to get status 201 is the same as 201
+--- PASS: TestCreateParticipant (0.00s)
+=== RUN   TestGetParticipants
+[GIN] 2022/10/10 - 09:00:02 | 200 |      29.667µs |                 | GET      "/participants"
+--- PASS: TestGetParticipants (0.00s)
+=== RUN   TestGetParticipant
+[GIN] 2022/10/10 - 09:00:02 | 200 |      13.541µs |                 | GET      "/participant/ED34"
+[GIN] 2022/10/10 - 09:00:02 | 404 |         125ns |                 | PUT      "/participant/KH32"
+--- PASS: TestGetParticipant (0.00s)
+=== RUN   TestUpdateParticipant
+[GIN] 2022/10/10 - 09:00:02 | 200 |      39.625µs |                 | PUT      "/participant/ED34"
+[GIN] 2022/10/10 - 09:00:02 | 404 |      10.292µs |                 | PUT      "/participant/KH32"
+--- PASS: TestUpdateParticipant (0.00s)
+=== RUN   TestDeleteParticipant
+[GIN] 2022/10/10 - 09:00:02 | 204 |       1.875µs |                 | DELETE   "/participant/ED34"
+[GIN] 2022/10/10 - 09:00:02 | 404 |         125ns |                 | PUT      "/participant/KH32"
+--- PASS: TestDeleteParticipant (0.00s)
+PASS
+coverage: 68.4% of statements
+ok      participant-project/api (cached)        coverage: 68.4% of statements
+```
+
 ## Test the application
 
 Use API testing tools such as [Postman](https://www.postman.com/) or [Insomnia](https://insomnia.rest/) to test the application locally.

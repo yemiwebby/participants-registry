@@ -13,15 +13,15 @@ It contains different endpoint with the required business logic to add, update, 
 Here are the endpoints and brief info about each:
 
 ```bash
-GetParticipants ➞ fetches all records of participants
+GetParticipants ➞ GET ("/participants") -> fetches all records of participants
 
-CreateParticipant ➞ Adds a new participant with a unique reference number and Id
+CreateParticipant ➞ POST ("/participant") -> Adds a new participant with a unique reference number and Id
 
-GetParticipant ➞ returns the record of a specific participant identified by his or her **Reference Number** included as a route parameter.
+GetParticipant ➞ GET ("/participant/:refNumber") -> returns the record of a specific participant identified by his or her **Reference Number** included as a route parameter.
 
-UpdateParticipant ➞ updates the record of a specific participant identified by his or her **Reference Number** included as a route parameter.
+UpdateParticipant ➞ PUT ("/participant/:refNumber") -> updates the record of a specific participant identified by his or her **Reference Number** included as a route parameter.
 
-DeleteParticipant ➞ removes the record of a specific participant
+DeleteParticipant ➞ DELETE ("/participant/:refNumber") -> removes the record of a specific participant
 ```
 
 ## Prerequisite

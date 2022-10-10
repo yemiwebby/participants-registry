@@ -91,3 +91,66 @@ func TestGetParticipants(t *testing.T) {
     assert.Equal(t, http.StatusOK, w.Code)
     assert.NotEmpty(t, participants)
 }
+
+func TestGetParticipant(t *testing.T) {
+    r := SetUpRouter()
+    r.GET("/participant/:refNumber", GetParticipant)
+
+    req, err := http.NewRequest(http.MethodGet, "/participant/ED34", nil)
+
+    if err != nil {
+        t.Fatalf("Couldn't create request: %v\n", err)
+    }
+    
+    w := httptest.NewRecorder()
+    r.ServeHTTP(w, req)
+    assert.Equal(t, http.StatusOK, w.Code)
+
+
+    pNotFound, _ := http.NewRequest(http.MethodPut, "/participant/KH32", nil)
+    w = httptest.NewRecorder()
+    r.ServeHTTP(w, pNotFound)
+    assert.Equal(t, http.StatusNotFound, w.Code)
+}
+
+func TestUpdateParticipant(t *testing.T) {
+    r := SetUpRouter()
+    r.PUT("/participant/:refNumber", UpdateParticipant)
+
+    // Update participant details
+    updatedParticipant := models.Participant{
+		Name: "New name",
+		DateOfBirth: "2020-02-09",
+		PhoneNumber: "000888444",
+		Address: "London, England",
+		UpdatedAt: now,
+	}
+
+    val, _ := json.Marshal(updatedParticipant)
+
+    pFound, _ := http.NewRequest(http.MethodPut, "/participant/ED34", bytes.NewBuffer(val))
+    w := httptest.NewRecorder()
+    
+    r.ServeHTTP(w, pFound)
+    assert.Equal(t, http.StatusOK, w.Code)
+
+    pNotFound, _ := http.NewRequest(http.MethodPut, "/participant/KH32", bytes.NewBuffer(val))
+    w = httptest.NewRecorder()
+    r.ServeHTTP(w, pNotFound)
+    assert.Equal(t, http.StatusNotFound, w.Code)
+}
+
+func TestDeleteParticipant(t *testing.T) {
+    r := SetUpRouter()
+    r.DELETE("/participant/:refNumber", DeleteParticipant)
+
+    req, _ := http.NewRequest(http.MethodDelete, "/participant/ED34", nil)
+    w := httptest.NewRecorder()
+    r.ServeHTTP(w, req)
+    assert.Equal(t, http.StatusNoContent, w.Code)
+
+    pNotFound, _ := http.NewRequest(http.MethodPut, "/participant/KH32", nil)
+    w = httptest.NewRecorder()
+    r.ServeHTTP(w, pNotFound)
+    assert.Equal(t, http.StatusNotFound, w.Code)
+}

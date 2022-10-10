@@ -1,4 +1,4 @@
-# Participant Registry Microservice'
+# Participant Registry Microservice
 
 [![CircleCI](https://circleci.com/gh/yemiwebby/participants-registry.svg?style=svg)](https://circleci.com/gh/yemiwebby/participants-registry)
 

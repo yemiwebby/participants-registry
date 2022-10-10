@@ -15,6 +15,9 @@ func NewServer() *Server {
 	// Add Routes
 	router.POST("/participant", CreateParticipant)
 	router.GET("/participants", GetParticipants)
+	router.GET("/participant/:refNumber", GetParticipant)
+	router.PUT("/participant/:refNumber", UpdateParticipant)
+	router.DELETE("/participant/:refNumber", DeleteParticipant)
 
 	server.router = router
 	return server

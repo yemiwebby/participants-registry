@@ -1,5 +1,7 @@
 # Participant Registry Microservice'
 
+<!-- [![CircleCI](https://circleci.com/gh/CIRCLECI-GWP/nest-slack-notifications.svg?style=svg)](https://circleci.com/gh/CIRCLECI-GWP/nest-slack-notifications) -->
+
 ## Clone the project
 
 ```bash

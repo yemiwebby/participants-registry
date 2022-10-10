@@ -3,6 +3,7 @@ package api
 import (
 	"bytes"
 	"encoding/json"
+	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"participant-project/models"
@@ -17,6 +18,19 @@ func SetUpRouter() *gin.Engine{
     gin.SetMode(gin.ReleaseMode)
     router := gin.Default()
     return router
+}
+
+func TestHomepageHandler(t *testing.T) {
+    mockResponse := `{"message":"Welcome to participant registry microservice"}`
+    r := SetUpRouter()
+    r.GET("/", HomepageHandler)
+    req, _ := http.NewRequest("GET", "/", nil)
+    w := httptest.NewRecorder()
+    r.ServeHTTP(w, req)
+
+    responseData, _ := ioutil.ReadAll(w.Body)
+    assert.Equal(t, mockResponse, string(responseData))
+    assert.Equal(t, http.StatusOK, w.Code)
 }
 
 func TestCreateParticipant(t *testing.T) {

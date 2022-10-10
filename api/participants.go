@@ -23,6 +23,10 @@ var participants = []models.Participant{
 	},
 }
 
+func HomepageHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{"message":"Welcome to the Tech Company listing API with Golang"})
+}
+
 func CreateParticipant(ctx *gin.Context) {
 	var payload *models.CreateParticipantRequest
 

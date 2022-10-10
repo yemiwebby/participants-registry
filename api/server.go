@@ -12,6 +12,7 @@ func NewServer() *Server {
 	server := &Server{}
 	router := gin.Default()
 
+	router.GET("/", HomepageHandler)
 	// Add Routes
 	router.POST("/participant", CreateParticipant)
 	router.GET("/participants", GetParticipants)

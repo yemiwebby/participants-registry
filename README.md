@@ -2,6 +2,28 @@
 
 [![CircleCI](https://circleci.com/gh/yemiwebby/participants-registry.svg?style=svg)](https://circleci.com/gh/yemiwebby/participants-registry)
 
+## Description
+
+This project creates and implemented functionality for different endpoints for a participant registry API.
+
+It contains different endpoint with the required business logic to add, update, remove and retrieve the details (personal information) of a specific participant.
+
+## Routes
+
+Here are the endpoints and brief info about each:
+
+```bash
+GetParticipants ➞ fetches all records of participants
+
+CreateParticipant ➞ Adds a new participant with a unique reference number and Id
+
+GetParticipant ➞ returns the record of a specific participant identified by his or her **Reference Number** included as a route parameter.
+
+UpdateParticipant ➞ updates the record of a specific participant identified by his or her **Reference Number** included as a route parameter.
+
+DeleteParticipant ➞ removes the record of a specific participant
+```
+
 ## Prerequisite
 
 This project requires [Go](https://go.dev/) runtime installed on your computer. Follow the instructions [here to download](https://go.dev/doc/install) and install it for your computer's operatiing system.
@@ -34,7 +56,7 @@ The preceding command will automatically start the project on [http://localhost:
 
 ![Default Homepage](./screenshots/homepage.png)
 
-**Note**: If you encouter an error about `gotest`, run the command below to install fix it:
+**Note**: If you encouter an error about `gotest`, run the command below to fix it:
 
 ```bash
 go install github.com/rakyll/gotest
